@@ -1,16 +1,14 @@
-# This is a sample Python script.
+from argparse import ArgumentParser
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('Niall')
+    parser = ArgumentParser(description="Retrieve setlist from YouTube video")
+    parser.add_argument('-url', '--url',
+                        default="https://www.youtube.com/watch?v=eFhsH3j4fOU&t=2170s",
+                        help="YouTube video URL")
+    parser.add_argument('-config_path', '--config_path',
+                        default="/main/resources/config.ini",
+                        help="path to .ini file with configuration for this application")
+    args = parser.parse_args()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    print(args.url)
+    print(args.config_path)
