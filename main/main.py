@@ -8,11 +8,12 @@ import json
 config = ConfigParser()
 config.read("./main/resources/config.ini")
 
-app_config = config["app"]
+default_config = config["default"]
 acr_cloud_request_config = config["acr-cloud-request"]
 
 app = Flask(__name__)
-api = Api(app, version=app_config["version"], title="SETGRAB",
+app.config["PROPAGATE_EXCEPTIONS"] = False
+api = Api(app, version=default_config["version"], title="SETGRAB",
           default='All', default_label='Recognise set lists')
 
 # request body models
@@ -27,6 +28,12 @@ acr_cloud_song = api.model("acr_cloud_song", {
     'acr_cloud_config': fields.Nested(acr_cloud_config),
     'file_path': fields.String(required=True, description='')
 })
+
+
+# exception handlers
+@api.errorhandler(KeyError)
+def handle_key_error(error):
+    return {'message': "failed to provide required keys in request"}, 400
 
 
 @api.route("/home")
@@ -49,4 +56,4 @@ class ACRCloudRecognizeSong(Resource):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=app_config["port"])
+    app.run(debug=True, port=default_config["port"])
