@@ -51,7 +51,7 @@ class ACRCloudRecognizeSong(Resource):
         request_body = request.get_json()
         acr_cloud_client = ACRCloudClient(config=dict(request_body["acr_cloud_config"]))
         return json.loads(
-            acr_cloud_client.recognize_by_file(request_body["file_path"], start_seconds, rec_length, None, 4)
+            acr_cloud_client.recognize_by_file(request_body["file_path"], start_seconds, rec_length, None)
         )
 
 
