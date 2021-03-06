@@ -3,7 +3,6 @@ from flask import Flask
 from flask import request
 from flask_restplus import Resource, Api, fields
 from services.acr_cloud_client import ACRCloudClient
-import json
 
 config = ConfigParser()
 config.read("./main/resources/config.ini")
@@ -29,6 +28,11 @@ acr_cloud_song = api.model("acr_cloud_song", {
     'file_path': fields.String(required=True, description='')
 })
 
+acr_cloud_multiple = api.model("acr_cloud_multiple", {
+    "acr_cloud_config": fields.Nested(acr_cloud_config),
+    "folder_path": fields.String(required=True, description='')
+})
+
 
 # exception handlers
 @api.errorhandler(KeyError)
@@ -42,17 +46,22 @@ class Home(Resource):
         return {"title": "WELCOME TO THE SETGRAB API v0.1"}
 
 
-@api.route("/acr-cloud/recognise/song")
+@api.route("/acr-cloud/recognize/song")
 class ACRCloudRecognizeSong(Resource):
     @api.expect(acr_cloud_song, validate=True)
     def post(self):
-        start_seconds = int(acr_cloud_request_config["start_seconds"])
-        rec_length = int(acr_cloud_request_config["rec_length"])
         request_body = request.get_json()
-        acr_cloud_client = ACRCloudClient(config=dict(request_body["acr_cloud_config"]))
-        return json.loads(
-            acr_cloud_client.recognize_by_file(request_body["file_path"], start_seconds, rec_length, None)
-        )
+        acr_cloud_client = ACRCloudClient(config=config, acr_cloud_config=dict(request_body["acr_cloud_config"]))
+        return acr_cloud_client.recognize_song(request_body["file_path"])
+
+
+@api.route("/acr-cloud/recognize/multiple")
+class ACRCloudRecognizeMultiple(Resource):
+    @api.expect(acr_cloud_multiple, validate=True)
+    def post(self):
+        request_body = request.get_json()
+        acr_cloud_client = ACRCloudClient(config=config, acr_cloud_config=dict(request_body["acr_cloud_config"]))
+        return acr_cloud_client.recognize_multiple(request_body["folder_path"])
 
 
 if __name__ == '__main__':
