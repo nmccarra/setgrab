@@ -3,9 +3,10 @@ from flask import Flask
 from flask import request
 from flask_restplus import Resource, Api, fields
 from services.acr_cloud_client import ACRCloudClient
+import os
 
 config = ConfigParser()
-config.read("./main/resources/config.ini")
+config.read(os.getcwd()+"/resources/config.ini")
 
 default_config = config["default"]
 acr_cloud_request_config = config["acr-cloud-request"]
