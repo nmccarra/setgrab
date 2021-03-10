@@ -1,0 +1,70 @@
+{
+    "seg_1": {
+        "status": {
+            "msg": "Success",
+            "code": 0,
+            "version": "1.0"
+        },
+        "metadata": {
+            "music": [
+                {
+                    "external_ids": {},
+                    "label": "Bite",
+                    "duration_ms": 406100,
+                    "score": 100,
+                    "play_offset_ms": 59700,
+                    "external_metadata": {},
+                    "release_date": "2020-05-29",
+                    "acrid": "c0ef42bf00275c5e4785555d785d050b",
+                    "title": "Last Vision",
+                    "album": {
+                        "name": "Walk on Wire"
+                    },
+                    "result_from": 3,
+                    "artists": [
+                        {
+                            "name": "Pablo Bozzi"
+                        }
+                    ]
+                }
+            ],
+            "timestamp_utc": "2021-03-09 21:17:42"
+        },
+        "cost_time": 0.023999929428101,
+        "result_type": 0
+    },
+    "seg_2": {
+        "status": {
+            "msg": "Success",
+            "code": 0,
+            "version": "1.0"
+        },
+        "metadata": {
+            "music": [
+                {
+                    "external_ids": {},
+                    "label": "Anjunabeats",
+                    "duration_ms": 322360,
+                    "score": 100,
+                    "play_offset_ms": 59760,
+                    "external_metadata": {},
+                    "release_date": "2020-09-23",
+                    "album": {
+                        "name": "Beul Un Latha"
+                    },
+                    "title": "Buel Un Latha",
+                    "acrid": "ab3168ca4960c9b78e904a999c0a34bc",
+                    "result_from": 3,
+                    "artists": [
+                        {
+                            "name": "Trance Wax"
+                        }
+                    ]
+                }
+            ],
+            "timestamp_utc": "2021-03-09 21:17:43"
+        },
+        "cost_time": 0.037000179290771,
+        "result_type": 0
+    }
+}

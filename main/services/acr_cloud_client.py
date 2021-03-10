@@ -2,6 +2,7 @@ from acrcloud.recognizer import ACRCloudRecognizer
 from os import listdir
 from os.path import isfile, join
 import json
+from types import SimpleNamespace
 
 
 class ACRCloudClient(ACRCloudRecognizer):
@@ -28,6 +29,15 @@ class ACRCloudClient(ACRCloudRecognizer):
         :return: a dict of the song attributes
         """
         return json.loads(self.recognize_by_file(file_path, self.start_seconds, self.rec_length, None))
+
+    def recognize_song_as_object(self, file_path):
+        """
+        recognize a single song by file and return dict as an object
+        :param file_path: path to audio file
+        :return: an object with the song attributes as properties
+        """
+        return json.loads(self.recognize_by_file(file_path, self.start_seconds, self.rec_length, None),
+                          object_hook=lambda d: SimpleNamespace(**d))
 
     def recognize_multiple(self, folder_path):
         """

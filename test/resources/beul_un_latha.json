@@ -1,0 +1,74 @@
+{
+  "status": {
+    "msg": "Success",
+    "code": 0,
+    "version": "1.0"
+  },
+  "metadata": {
+    "music": [
+      {
+        "external_ids": {},
+        "label": "Anjunabeats",
+        "duration_ms": 229000,
+        "score": 100,
+        "play_offset_ms": 4600,
+        "external_metadata": {},
+        "release_date": "2020-10-04",
+        "acrid": "93bdac463c82216ddd425511d3e324d1",
+        "title": "Beul Un Latha (ABGT401)",
+        "album": {
+          "name": "Group Therapy 401"
+        },
+        "result_from": 1,
+        "artists": [
+          {
+            "name": "Above & Beyond Group Therapy, Anjunabeats"
+          }
+        ]
+      },
+      {
+        "external_ids": {},
+        "label": "Anjunabeats",
+        "duration_ms": 322360,
+        "score": 100,
+        "play_offset_ms": 89240,
+        "external_metadata": {},
+        "release_date": "2020-09-23",
+        "album": {
+          "name": "Beul Un Latha"
+        },
+        "title": "Buel Un Latha",
+        "acrid": "ab3168ca4960c9b78e904a999c0a34bc",
+        "result_from": 1,
+        "artists": [
+          {
+            "name": "Trance Wax"
+          }
+        ]
+      },
+      {
+        "external_ids": {},
+        "release_date": "2020-10-14",
+        "play_offset_ms": 89220,
+        "external_metadata": {},
+        "score": 100,
+        "title": "Beul Un Latha",
+        "duration_ms": 212160,
+        "album": {
+          "name": "Calling For You"
+        },
+        "acrid": "3cf39c9cb453fbea0ebecc5cb223868f",
+        "result_from": 1,
+        "artists": [
+          {
+            "name": "Trance Wax"
+          }
+        ]
+      }
+    ],
+    "timestamp_utc": "2021-03-02 21:48:05"
+  },
+  "cost_time": 0.34599995613098,
+  "result_type": 0
+}
+
