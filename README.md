@@ -2,9 +2,7 @@
 
 An API to recognise a set list from given audio
 
-
-![setgrab-api-layers](https://user-images.githubusercontent.com/26139776/111034222-786fd100-840c-11eb-8909-ca608f8aef96.png)
-
+![setgrab-api-layers](https://user-images.githubusercontent.com/26139776/111041581-bb43a000-8430-11eb-963b-3620371636d6.png)
 
 *Developed with Python 3 (Flask framework)*
 
