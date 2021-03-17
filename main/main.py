@@ -6,7 +6,7 @@ from services.acr_cloud_client import ACRCloudClient
 import os
 
 config = ConfigParser()
-config.read(os.getcwd()+"/main/resources/config.ini")
+config.read(os.getcwd() + "/main/resources/config.ini")
 
 default_config = config["default"]
 acr_cloud_request_config = config["acr-cloud-request"]
@@ -45,6 +45,7 @@ def handle_key_error(error):
 class Home(Resource):
     def get(self):
         return {"title": "WELCOME TO THE SETGRAB API v0.1"}
+
 
 @api.route("/acr-cloud/recognize/song")
 class ACRCloudRecognizeSong(Resource):

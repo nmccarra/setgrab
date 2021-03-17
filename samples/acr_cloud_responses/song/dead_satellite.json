@@ -1,0 +1,59 @@
+{
+    "status": {
+        "msg": "Success",
+        "code": 0,
+        "version": "1.0"
+    },
+    "metadata": {
+        "music": [
+            {
+                "external_ids": {},
+                "label": "Delsin Records",
+                "duration_ms": 299630,
+                "score": 100,
+                "play_offset_ms": 59400,
+                "external_metadata": {},
+                "release_date": "2018-10-29",
+                "title": "Dead Satellite (Original Mix)",
+                "acrid": "1c03eb0f04fadddf0452a0eb8881da2c",
+                "genres": [
+                    {
+                        "name": "Dance"
+                    }
+                ],
+                "album": {
+                    "name": "Dead Satellite EP"
+                },
+                "result_from": 1,
+                "artists": [
+                    {
+                        "name": "Yan Cook"
+                    }
+                ]
+            },
+            {
+                "external_ids": {},
+                "label": "Delsin Records",
+                "play_offset_ms": 59600,
+                "external_metadata": {},
+                "score": 100,
+                "release_date": "2018-10-29",
+                "title": "Dead Satellite",
+                "duration_ms": 299000,
+                "album": {
+                    "name": "Dead Satellite EP"
+                },
+                "acrid": "ef0da56b1c70a5e6ea96351dfca77adf",
+                "result_from": 1,
+                "artists": [
+                    {
+                        "name": "Yan Cook"
+                    }
+                ]
+            }
+        ],
+        "timestamp_utc": "2021-03-17 22:11:17"
+    },
+    "cost_time": 0.20499992370605,
+    "result_type": 0
+}

@@ -21,3 +21,17 @@ class HourMinutesSecondsMark:
 
     def __eq__(self, other):
         return (self.hour, self.minutes, self.seconds) == (other.hour, other.minutes, other.seconds)
+
+    def as_youtube_time_mark(self):
+        """
+        function to convert HourMinutesSecondsMark to a string of its representation
+        in YouTube time mark format
+        :param hour_minutes_seconds: instance of HourMinutesSecondsMark
+        :return: string in YouTube time mark format
+        """
+        if self.hour == 0:
+            time_mark_string = str(self.minutes) + ":" + str(self.seconds).zfill(2)
+        else:
+            time_mark_string = str(self.hour) + ":" + str(self.minutes).zfill(
+                2) + ":" + str(self.seconds).zfill(2)
+        return time_mark_string

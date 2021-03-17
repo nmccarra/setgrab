@@ -1,0 +1,34 @@
+{
+    "status": {
+        "msg": "Success",
+        "code": 0,
+        "version": "1.0"
+    },
+    "metadata": {
+        "music": [
+            {
+                "external_ids": {},
+                "title": "Mondschein",
+                "play_offset_ms": 59440,
+                "external_metadata": {},
+                "score": 100,
+                "release_date": "2020-12-04",
+                "label": "BPitch Control",
+                "duration_ms": 336720,
+                "album": {
+                    "name": "Mondschein"
+                },
+                "acrid": "71ab8c65bf501a36e6f7ddf1f1a088e7",
+                "result_from": 1,
+                "artists": [
+                    {
+                        "name": "JakoJako"
+                    }
+                ]
+            }
+        ],
+        "timestamp_utc": "2021-03-17 22:14:47"
+    },
+    "cost_time": 0.29699993133545,
+    "result_type": 0
+}

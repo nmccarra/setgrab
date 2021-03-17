@@ -12,7 +12,8 @@ class ACRResultsParser:
         """
         self.config = config
 
-    def parse_to_artist_song_entry(self, acr_raw_object):
+    @staticmethod
+    def parse_to_artist_song_entry(acr_raw_object):
         """
         parse an ACR response object to ArtistSongTitleEntry instances
         :param acr_raw_object: response from ACR Content Recognition API as an object
@@ -56,5 +57,5 @@ class ACRResultsParser:
                                              v is not None}
 
         key_list = list(dict_w_single_most_frequent_entry.keys())
-        sorted_key_list = sorted(key_list, key=lambda x: (x.hour, x.seconds))
+        sorted_key_list = sorted(key_list, key=lambda x: (x.hour, x.minutes, x.seconds))
         return self.prune_results(dict_w_single_most_frequent_entry, sorted_key_list)
