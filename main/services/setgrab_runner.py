@@ -1,5 +1,6 @@
 from main.services.acr_cloud_client import ACRCloudClient
 from main.services.acr_results_parser import ACRResultsParser
+from main.services.parsed_results_formatter import ParsedResultsFormatter
 
 
 class SetgrabRunner:
@@ -18,9 +19,10 @@ class SetgrabRunner:
         # TODO : Create setlist_segment_builder class and add here as a property
         self.acr_cloud_client = ACRCloudClient(config, acr_cloud_config)
         self.acr_results_parser = ACRResultsParser(config)
-        # TODO : Create setlist_formatter class and add here as a property
+        self.parsed_results_formatter = ParsedResultsFormatter(config)
 
-    def recognize_setlist(self, url):
+    @staticmethod
+    def recognize_setlist(url):
         """
         run content recognition on the audio of the video at URL provided
         :param url: URL to set on YouTube
@@ -29,7 +31,8 @@ class SetgrabRunner:
         # TODO : Implement member once all stage classes are created
         return None
 
-    def recognize_setlist_as_text(self, url):
+    @staticmethod
+    def recognize_setlist_as_text(url):
         """
         run content recognition on the audio of the video at URL provided
         :param url: URL to set on YouTube
