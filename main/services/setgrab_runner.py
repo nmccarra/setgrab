@@ -1,6 +1,7 @@
 from main.services.acr_cloud_client import ACRCloudClient
 from main.services.acr_results_parser import ACRResultsParser
 from main.services.parsed_results_formatter import ParsedResultsFormatter
+from main.services.youtube_audio_downloader import YouTubeAudioDownloader
 
 
 class SetgrabRunner:
@@ -9,13 +10,13 @@ class SetgrabRunner:
     downloading audio, segment-building, sending requests to ACR API, parsing and formatting
     """
 
-    def __init__(self, config, acr_cloud_config):
+    def __init__(self, config, acr_cloud_config, sub_folder):
         """
         :param config: full config file in main/resources/config.ini
         :param acr_cloud_config: configuration for the ACR Cloud API i.e. credentials
         """
         self.config = config
-        # TODO : Create setlist_downloader class and add here as a property
+        self.downloader = YouTubeAudioDownloader(config=config, sub_folder=sub_folder)
         # TODO : Create setlist_segment_builder class and add here as a property
         self.acr_cloud_client = ACRCloudClient(config, acr_cloud_config)
         self.acr_results_parser = ACRResultsParser(config)
