@@ -4,9 +4,9 @@ from main.services.parsed_results_formatter import ParsedResultsFormatter
 from main.services.youtube_audio_downloader import YouTubeAudioDownloader
 
 
-class SetgrabRunner:
+class Setgrabber:
     """
-    a runner class for all the stages in setgrab i.e.
+    class for all the stages in setgrab i.e.
     downloading audio, segment-building, sending requests to ACR API, parsing and formatting
     """
 
