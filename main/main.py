@@ -101,4 +101,4 @@ class SetgrabDownloadRecognizeSong(Resource):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=default_config["port"])
+    app.run(debug=True, port=default_config["port"], host='0.0.0.0')
