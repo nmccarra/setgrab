@@ -4,10 +4,11 @@ An API to recognise a set list from given audio
 
 *Developed with Python 3 (Flask framework)*
 
-### Run
+### Development Environment Setup
 
-#### Virtual Environment Setup
-To run the application, first ensure that you have created a new virtual environment:
+This project requires [ffmpeg](https://ffmpeg.org/download.html)
+
+To run the application, ensure that you have created a new virtual environment:
 
 ```buildoutcfg
 python -m venv setgrab_env
@@ -44,12 +45,21 @@ In this environment, install the relevant packages:
 pip install -r requirements.txt
 ```
 
-#### Running the Application
+### Running the Application
 
-In the environment:
+With a fully set-up development environment, can run application using:
 ```buildoutcfg
 python main/main.py
 ```
-This will start up the application on port *8080*.
+
+The application can also be run inside a Docker container (must have Docker engine installed). 
+
+Run the following at the root of the project:
+```buildoutcfg
+docker build --tag setgrab .
+docker run --publish 3000:8000 setgrab
+```
+
+The application will listen on port 8000, however if using the Docker commands above, requests should be directed to port 3000 as this is the external port to which the container is bound. 
 
 There is a Swagger UI at the root address of the API for documentation and for testing the endpoints.
