@@ -53,7 +53,7 @@ python main/main.py
 ```
 There is a Swagger UI at the root address of the API for documentation and for testing the endpoints.
 
-####Docker
+#### Docker
 The application can also be run inside a Docker container (must have Docker engine installed). 
 
 Run the following at the root of the project:
@@ -64,8 +64,20 @@ docker run --publish 3000:8000 setgrab
 
 The application will listen on port 8000, however if using the Docker commands above, requests should be directed to port 3000 as this is the external port to which the container is bound.
 
-#####Other Useful Docker Commands
+##### Other Useful Docker Commands
+List all running containers:
+```buildoutcfg
+docker ps
+```
 Stop all running containers:
 ```buildoutcfg
 docker kill $(docker ps -q)
+```
+Delete all stopped containers:
+```buildoutcfg
+docker rm $(docker ps -a -q)
+```
+Exec into container and start a Bash session:
+```buildoutcfg
+docker exec -it <container name> /bin/bash
 ```
