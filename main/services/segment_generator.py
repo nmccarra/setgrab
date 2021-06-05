@@ -26,7 +26,7 @@ class SegmentGenerator(AudioSegment):
         :return: dict with starting time of segment as key and path to segment file as value
         """
         os.mkdir(self.segments_path)
-        download = AudioSegment.from_mp3(self.download_path)
+        download = AudioSegment.from_file(self.download_path)
         download_length = int(download.duration_seconds)
         segment_count = download_length//self.segment_length
         output = {}

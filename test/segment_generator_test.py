@@ -1,11 +1,13 @@
 import unittest
 from configparser import ConfigParser
+from uuid import uuid4
+
 from main.services.segment_generator import SegmentGenerator
 import os
 from shutil import copyfile
 from shutil import rmtree
 
-hash_folder_name = "e34fwd"
+hash_folder_name = uuid4().hex
 
 
 class TestSegmentGenerator(unittest.TestCase):
@@ -14,8 +16,8 @@ class TestSegmentGenerator(unittest.TestCase):
         self.config = ConfigParser()
         self.config.read(os.getcwd()+"/resources/config.ini")
         self.segment_generator = SegmentGenerator(config=self.config, hash_folder_name=hash_folder_name)
-
-        os.mkdir(os.getcwd() + "/.tmp")
+        if not os.path.exists(os.getcwd() + "/.tmp"):
+            os.mkdir(os.getcwd() + "/.tmp")
         os.mkdir(os.getcwd() + "/.tmp/" + hash_folder_name)
         copyfile(os.getcwd() + "/resources/download.mp3", os.getcwd() + "/.tmp/" + hash_folder_name + "/download.mp3")
 
