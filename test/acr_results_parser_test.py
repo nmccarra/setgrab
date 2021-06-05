@@ -19,7 +19,7 @@ class TestACRResultsParser(unittest.TestCase):
         dummy_acr_client_output = {}
         for index_file_pair in enumerate(files):
             with open(os.getcwd() + "/resources/" + index_file_pair[1], "r") as json_file:
-                key = HourMinutesSecondsMark(index_file_pair[0], 0, 0)
+                key = HourMinutesSecondsMark(index_file_pair[0]*60*60)
                 dummy_acr_client_output[key] = json.load(json_file, object_hook=lambda d: SimpleNamespace(**d))
         return dummy_acr_client_output
 
@@ -55,9 +55,9 @@ class TestACRResultsParser(unittest.TestCase):
     def test_should_parse_results_correctly(self):
         dummy_acr_client_output = self.create_dummy_acr_client_output()
         parsed_dict = self.parser.parse(dummy_acr_client_output)
-
-        self.assertEqual(ArtistSongTitleEntry("Trance Wax", "Beul Un Latha"), parsed_dict[HourMinutesSecondsMark(0, 0, 0)])
-        self.assertEqual(ArtistSongTitleEntry("Pablo Bozzi", "Last Vision"), parsed_dict[HourMinutesSecondsMark(3, 0, 0)])
+        print([str(i) for i in parsed_dict.keys()])
+        self.assertEqual(ArtistSongTitleEntry("Trance Wax", "Beul Un Latha"), parsed_dict[HourMinutesSecondsMark(0)])
+        self.assertEqual(ArtistSongTitleEntry("Pablo Bozzi", "Last Vision"), parsed_dict[HourMinutesSecondsMark(10800)])
         self.assertEqual(2, len(parsed_dict))
 
 

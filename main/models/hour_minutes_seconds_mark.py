@@ -1,16 +1,19 @@
+import datetime
+
+
 class HourMinutesSecondsMark:
     """
     class to manage time marks
     """
-    def __init__(self, hour, minutes, seconds):
+
+    def __init__(self, seconds):
         """
-        :param hour: hour mark from start in video audio
-        :param minutes: minutes mark from start in video audio
         :param seconds: seconds mark from start in video audio
         """
-        self.hour = hour
-        self.minutes = minutes
-        self.seconds = seconds
+        time_elements = [int(i) for i in str(datetime.timedelta(seconds=seconds)).split(":")]
+        self.hour = time_elements[0]
+        self.minutes = time_elements[1]
+        self.seconds = time_elements[2]
 
     def __str__(self):
         return "HourMinutesSecondsMark({hour_str}, {minutes_str}, {seconds_str})" \
@@ -26,7 +29,6 @@ class HourMinutesSecondsMark:
         """
         function to convert HourMinutesSecondsMark to a string of its representation
         in YouTube time mark format
-        :param hour_minutes_seconds: instance of HourMinutesSecondsMark
         :return: string in YouTube time mark format
         """
         if self.hour == 0:
