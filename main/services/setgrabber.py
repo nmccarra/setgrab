@@ -1,4 +1,5 @@
 import os
+from uuid import uuid4
 
 from main.services.acr_cloud_client import ACRCloudClient
 from main.services.acr_results_parser import ACRResultsParser
@@ -14,18 +15,23 @@ class Setgrabber:
     downloading audio, segment-building, sending requests to ACR API, parsing and formatting
     """
 
-    def __init__(self, config, acr_cloud_config, sub_folder):
+    def __init__(self, config, acr_cloud_config, sub_folder_name=uuid4().hex):
         """
         :param config: full config file in main/resources/config.ini
         :param acr_cloud_config: configuration for the ACR Cloud API i.e. credentials
         """
         self.config = config
-        self.sub_folder = sub_folder
-        self.downloader = YouTubeAudioDownloader(config=config, sub_folder=sub_folder)
-        self.segment_generator = SegmentGenerator(config=config, hash_folder_name=sub_folder)
+        self.downloader = YouTubeAudioDownloader(config=config, sub_folder=sub_folder_name)
+        self.segment_generator = SegmentGenerator(config=config, hash_folder_name=sub_folder_name)
         self.acr_cloud_client = ACRCloudClient(config, acr_cloud_config)
         self.acr_results_parser = ACRResultsParser(config)
         self.parsed_results_formatter = ParsedResultsFormatter(config)
+
+        # directory and file paths
+        self.download_folder_path = self.config["youtube-audio-downloader"]["download_folder"]
+        self.sub_folder_name = sub_folder_name
+        self.sub_folder_path = "{}/{}".format(self.download_folder_path, sub_folder_name)
+        self.formatted_file_path = "{}/{}".format(self.sub_folder_path, "setgrab_results.json")
 
     def recognize_setlist(self, url):
         """
@@ -33,11 +39,10 @@ class Setgrabber:
         :param url: URL to set on YouTube
         :return: a timestamped setlist of the songs recognised from the audio with timestamp keys and artist, song values
         """
-        download_folder = self.config["youtube-audio-downloader"]["download_folder"]
-        if not os.path.exists(download_folder):
-            os.mkdir(self.config["youtube-audio-downloader"]["download_folder"])
-        os.mkdir(self.config["youtube-audio-downloader"]["download_folder"] + "/" + self.sub_folder)
-        print("Processing request {}".format(self.sub_folder))
+        if not os.path.exists(self.download_folder_path):
+            os.mkdir(self.download_folder_path)
+        os.mkdir(self.sub_folder_path)
+        print("Processing request {}".format(self.sub_folder_name))
         print("(1/5) Downloading..")
         self.downloader.download_mp3(url)
         print("(2/5) Segmenting..")
@@ -49,9 +54,7 @@ class Setgrabber:
         parsed_dict = self.acr_results_parser.parse(acr_results_dict)
         print("(5/5) Formatting..")
         formatted_result = self.parsed_results_formatter.format(parsed_dict)
-        formatted_file_location = self.config["youtube-audio-downloader"][
-                                      "download_folder"] + "/" + self.sub_folder + "/setgrab_results.json"
-        with open(formatted_file_location, 'w', encoding='utf-8') as f:
+        with open(self.formatted_file_path, 'w', encoding='utf-8') as f:
             json.dump(formatted_result, f, ensure_ascii=False, indent=4)
         print(formatted_result)
         return 0
