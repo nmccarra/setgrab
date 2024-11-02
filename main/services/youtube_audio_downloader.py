@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
-from youtube_dl import YoutubeDL
-from youtube_dl.utils import DownloadError
+from yt_dlp import YoutubeDL, DownloadError
 
 
 class YouTubeAudioDownloaderLogger:
@@ -35,7 +34,7 @@ class YouTubeAudioDownloader(YoutubeDL):
         """
         self.config = config
         self.youtube_audio_downloader_config = config["youtube-audio-downloader"]
-        self.download_path = self.youtube_audio_downloader_config["download_folder"] + "/" + sub_folder + "/" + self.youtube_audio_downloader_config['download_name'] + ".mp3"
+        self.download_path = self.youtube_audio_downloader_config["download_folder"] + "/" + sub_folder + "/" + self.youtube_audio_downloader_config['download_name']
 
         ydl_opts = {
             'format': self.youtube_audio_downloader_config["format"],

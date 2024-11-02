@@ -5,6 +5,7 @@ from main.services.acr_results_parser import ACRResultsParser
 from main.services.parsed_results_formatter import ParsedResultsFormatter
 from main.services.segment_generator import SegmentGenerator
 from main.services.youtube_audio_downloader import YouTubeAudioDownloader
+import json
 
 
 class Setgrabber:
@@ -36,16 +37,23 @@ class Setgrabber:
         if not os.path.exists(download_folder):
             os.mkdir(self.config["youtube-audio-downloader"]["download_folder"])
         os.mkdir(self.config["youtube-audio-downloader"]["download_folder"] + "/" + self.sub_folder)
+        print("Processing request {}".format(self.sub_folder))
         print("(1/5) Downloading..")
         self.downloader.download_mp3(url)
         print("(2/5) Segmenting..")
         segments_dict = self.segment_generator.segment()
+        print("Produced {} segments".format(len(segments_dict.keys())))
         print("(3/5) Recognising..")
         acr_results_dict = {k: self.acr_cloud_client.recognize_song_as_object(v) for (k, v) in segments_dict.items()}
         print("(4/5) Parsing..")
         parsed_dict = self.acr_results_parser.parse(acr_results_dict)
         print("(5/5) Formatting..")
-        print(self.parsed_results_formatter.format(parsed_dict))
+        formatted_result = self.parsed_results_formatter.format(parsed_dict)
+        formatted_file_location = self.config["youtube-audio-downloader"][
+                                      "download_folder"] + "/" + self.sub_folder + "/setgrab_results.json"
+        with open(formatted_file_location, 'w', encoding='utf-8') as f:
+            json.dump(formatted_result, f, ensure_ascii=False, indent=4)
+        print(formatted_result)
         return 0
 
     def recognize_setlist_as_text(self, url):
