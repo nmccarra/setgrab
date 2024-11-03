@@ -11,4 +11,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-ENTRYPOINT python main/main.py
+ENTRYPOINT python app.py

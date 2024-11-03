@@ -10,17 +10,16 @@ class ACRCloudClient(ACRCloudRecognizer):
     A class which extends the ACRCloudRecognizer by allowing for multiple file
     recognition
     """
-    def __init__(self, config, acr_cloud_config):
+    def __init__(self, config):
         """
         :param config: full config file in main/resources/config.ini
-        :param acr_cloud_config: configuration for the ACR Cloud API i.e. credentials
         """
         self.config = config
         self.acr_cloud_request_config = self.config["acr-cloud-request"]
         self.start_seconds = int(self.acr_cloud_request_config["start_seconds"])
         self.rec_length = int(self.acr_cloud_request_config["rec_length"])
-        self.acr_cloud_config = acr_cloud_config
-        super().__init__(config=acr_cloud_config)
+        self.acr_cloud_config = config["acr"]
+        super().__init__(config=self.acr_cloud_config)
 
     def recognize_song(self, file_path):
         """

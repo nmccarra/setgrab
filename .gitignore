@@ -6,3 +6,4 @@ setgrab_env/
 .DS_Store
 batch_run.py
 **.tmp**
+**/acr_cloud_credentials.txt
