@@ -15,7 +15,7 @@ acr_cloud_request_config = config["acr-cloud-request"]
 
 app = Flask(__name__)
 app.config["PROPAGATE_EXCEPTIONS"] = False
-api = Api(app, version=default_config["version"], title="SETGRAB",
+api = Api(app, version=default_config["version"], title="setgrab",
           default='All', default_label='Recognise set lists')
 
 # request body models
