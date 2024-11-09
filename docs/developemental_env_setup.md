@@ -39,6 +39,14 @@ In this environment, install the relevant packages:
 pip install -r requirements.txt
 ```
 
+### Creating ACR Cloud Account
+
+This application requires use of [ACR Cloud](https://www.acrcloud.com/).
+
+Set up an account and obtain values for `host`, `access_key` and `access_secret`.
+
+Insert these values into section `acr` in  `resource/main/config.ini`.
+
 ### Running the Application
 
 With a fully set-up development environment, can run application using:
