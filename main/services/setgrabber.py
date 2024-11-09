@@ -75,7 +75,7 @@ class Setgrabber:
         print(formatted_result)
         self.cache_manager.update(
             job_id=self.sub_folder_name,
-            update_dict={"response": formatted_result},
+            update_dict={"items": formatted_result},
             status="success"
         )
         return 0

@@ -43,11 +43,14 @@ pip install -r requirements.txt
 
 With a fully set-up development environment, can run application using:
 ```buildoutcfg
-python main/main.py
+python app.py
 ```
 
-### Endpoint Documentation
-There is a Swagger UI at the root address of the API for documentation and for testing the endpoints.
+### Testing
+```buildoutcfg
+python -m unittest
+```
+
 
 ### Docker
 The application can also be run inside a Docker container (must have Docker engine installed). 

@@ -21,11 +21,10 @@ class TestParsedResultsFormatter(unittest.TestCase):
 
     def test_should_return_formatted_dict(self):
         formatted_result = self.formatter.format(self.parsed_results_dict_test_case_1)
-        self.assertEqual("Bicep - Just", formatted_result["1:00"])
-        self.assertEqual("Ansome - Smuggler's Den", formatted_result["3:30"])
-        self.assertEqual("Blawan - 993", formatted_result["5:00"])
-        self.assertEqual("Karenn - Salz", formatted_result["1:21:30"])
-        self.assertEqual("Djedjotronic, Miss Kittin - Pleasure & Pain", formatted_result["3:03:00"])
+        result_1 = formatted_result[0]
+        self.assertEqual("1:00", result_1["time"])
+        self.assertEqual("Bicep", result_1["artist"])
+        self.assertEqual("Just", result_1["track"])
 
     def test_should_return_formatted_text(self):
         formatted_result = self.formatter.format_as_text(self.parsed_results_dict_test_case_1).replace(" ", "").replace(

@@ -3,6 +3,7 @@ class ParsedResultsFormatter:
     A class which takes the parsed JSON from the results parser
     and formats it for presentation to user
     """
+
     def __init__(self, config):
         self.config = config
 
@@ -10,9 +11,19 @@ class ParsedResultsFormatter:
     def format(parsed_results_dict):
         """
         :param parsed_results_dict: a dict with keys that are HourMinutesSecondsMark and values that are ArtistSongTitleEntry
-        :return: dict with keys that are YouTube time mark strings and values that are the artist_name and song_title concatenated
+        :return: list of dict entries containing the time, artist and track of the setlist item
         """
-        return {k.as_youtube_time_mark(): v.artist_name + " - " + v.song_title for (k, v) in parsed_results_dict.items()}
+        output = []
+        for (k, v) in parsed_results_dict.items():
+            output.append(
+                {
+                    "time": k.as_youtube_time_mark(),
+                    "artist": v.artist_name,
+                    "track": v.song_title
+                }
+            )
+
+        return output
 
     @staticmethod
     def format_as_text(parsed_results_dict):
