@@ -14,13 +14,13 @@ Create a recognition job using:
 curl --location --request POST 'localhost:8000/setgrab' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "url" : "https://www.youtube.com/watch?v=wPIFUWOLc2A",
-    "start_time" : "05:00"
+    "url" : "<url>",
+    "start_time" : "00:00"
 }'
 ```
 Retrieve the recognition results using:
 ```commandline
-curl --location --request GET 'localhost:8000/setgrab/09ef0b06661d4df8a524a2fa8e660759'
+curl --location --request GET 'localhost:8000/setgrab/<job-id>'
 ```
 
 The API can be inspected by running the application locally and going to `http://localhost:8000` where there is a Swagger doc available.
