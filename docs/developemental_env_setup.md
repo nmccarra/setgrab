@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 With a fully set-up development environment, can run application using:
 ```buildoutcfg
-python main/main.py
+python app.py
 ```
 
 ### Endpoint Documentation
